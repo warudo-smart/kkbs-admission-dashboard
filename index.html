@@ -4,6 +4,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>KKBS Admission News Subscribe Dashboard</title>
+  <meta name="description" content="แดชบอร์ดติดตามผู้สมัครรับข่าวสารการรับสมัครเข้าศึกษา คณะบริหารธุรกิจและการบัญชี มหาวิทยาลัยขอนแก่น" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%23353c53'/%3E%3Crect x='14' y='34' width='8' height='16' rx='2' fill='%23f36f21'/%3E%3Crect x='28' y='24' width='8' height='26' rx='2' fill='%23f7b26e'/%3E%3Crect x='42' y='16' width='8' height='34' rx='2' fill='%23485e88'/%3E%3C/svg%3E" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.3.1/css/all.min.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -558,7 +560,7 @@
       <div><label>ความยินยอม</label><select id="exportConsent"><option value="consent" selected>เฉพาะผู้ยินยอม</option><option value="all">ทั้งหมด</option><option value="no-consent">ไม่ยินยอม/ไม่ระบุ</option></select></div>
     </div>
     <div class="export-summary" id="exportSummary"></div>
-    <div class="privacy-note"><strong>PDPA:</strong> ข้อมูลส่งออกมีข้อมูลส่วนบุคคล โปรดใช้เฉพาะตามวัตถุประสงค์และฐานกฎหมาย/ความยินยอมที่เกี่ยวข้องของหน่วยงาน ตรวจสอบรายชื่อก่อนนำไปใช้งานจริง</div>
+    <div class="privacy-note"><strong>PDPA:</strong> ข้อมูลส่งออกมีข้อมูลส่วนบุคคล โปรดใช้เฉพาะตามวัตถุประสงค์และฐานกฎหมาย/ความยินยอมที่เกี่ยวข้องของหน่วยงาน ตรวจสอบรายชื่อก่อนนำไปใช้งานจริง · การเข้าถึง/ส่งออกต้องยืนยันด้วยรหัสผ่าน (ตั้งค่าได้ที่ <code>CONFIG.exportPin</code>)</div>
     <div class="export-actions"><button id="previewExportBtn">Preview</button><button class="primary" id="exportCsvBtn">CSV</button><button id="exportXlsxBtn">Excel</button><button id="copyEmailBtn">Copy Email</button><button id="copyPhoneBtn">Copy Phone</button><button id="exportReportJsonBtn">ข้อมูลรายงาน (JSON)</button></div>
     <div class="preview-table table-wrap" id="exportPreviewWrap" style="display:none"><table><thead><tr><th>ชื่อ-นามสกุล</th><th>Email</th><th>Mobile</th><th>จังหวัด</th><th>ภูมิภาค</th><th>สถานศึกษา</th><th>ระดับชั้น</th><th>ปีเข้า</th><th>หลักสูตร</th><th>Consent</th></tr></thead><tbody id="exportPreviewBody"></tbody></table></div>
   </section>
@@ -605,7 +607,6 @@
 </aside>
 
 <script>
-window.__kkbsBooted = true;
 const CONFIG = {
   spreadsheetId: '19RcvNg-StV9PLwlEI609MRI3UUoL8m5a0RO30BsKU5s',
   sheetName: 'Form Responses 1',
@@ -615,6 +616,7 @@ const CONFIG = {
   aiModel: 'gpt-5.6-luna',
   aiProvider: 'kku-intelsphere',
   aiSecret: 'KKBS21042559',
+  exportPin: 'KKBS-Admission-2569',
   aiSphereId: '019a38a2-7c2f-7680-a626-ee97fe6c9acb',
   aiSystemPrompt: 'คุณเป็นนักวิเคราะห์ข้อมูลและบรรณาธิการภาษาไทยสำหรับงานสื่อสารองค์กรของคณะบริหารธุรกิจและการบัญชี มหาวิทยาลัยขอนแก่น ให้เขียนบทสรุปผู้บริหารภาษาไทยที่ถูกต้อง กระชับ เป็นกลาง และพร้อมเผยแพร่ ใช้เฉพาะตัวเลขและข้อเท็จจริงที่ได้รับ ห้ามสร้าง เดา หรือเปลี่ยนแปลงตัวเลข แยกข้อเท็จจริงออกจากข้อสังเกต ใช้ถ้อยคำอย่าง "ข้อมูลบ่งชี้ว่า" "พบสัญญาณว่า" "พื้นที่ที่น่าจับตา" "โอกาสทางการสื่อสาร" และหลีกเลี่ยงคำโฆษณาเกินจริง'
 };
@@ -777,7 +779,8 @@ function populateExportFilters(){
 function exportFilteredRows(){const region=$('exportRegion').value,province=$('exportProvince').value,program=$('exportProgram').value,year=$('exportYear').value,level=$('exportLevel').value,school=$('exportSchool').value,consent=$('exportConsent').value;return allRows.filter(r=>{const yes=normalize(r[COL.consent]).includes('ยินยอม');return (region==='ทั้งหมด'||getRegion(r[COL.province])===region)&&(province==='ทั้งหมด'||normalize(r[COL.province])===province)&&(program==='ทั้งหมด'||splitMulti(r[COL.program]).includes(program))&&(year==='ทั้งหมด'||normalize(r[COL.year])===year)&&(level==='ทั้งหมด'||normalizeEducationStatus(r[COL.level])===level)&&(school==='ทั้งหมด'||normalizeSchoolName(r[COL.school]).name===school)&&(consent==='all'||(consent==='consent'&&yes)||(consent==='no-consent'&&!yes));});}
 function exportObjects(){return currentExportRows.map(r=>({'ชื่อ':normalize(r[COL.firstName]),'นามสกุล':normalize(r[COL.lastName]),'Email':normalize(r[COL.email]),'Mobile':normalize(r[COL.mobile]),'จังหวัด':normalize(r[COL.province]),'ภูมิภาค':getRegion(r[COL.province]),'สถานศึกษา':normalizeSchoolName(r[COL.school]).name,'ระดับชั้น/สถานะ':normalizeEducationStatus(r[COL.level]),'ปีการศึกษาที่จะเข้า':normalize(r[COL.year]),'หลักสูตรที่สนใจ':normalize(r[COL.program]),'ช่องทางที่รู้จัก':normalize(r[COL.channel]),'Consent':normalize(r[COL.consent]),'วันที่สมัครรับข่าวสาร':normalize(r[COL.timestamp])}));}
 function refreshExportPreview(show=false){currentExportRows=exportFilteredRows();const e=currentExportRows.filter(r=>normalizeContactEmail(r[COL.email])).length,m=currentExportRows.filter(r=>normalizeMobile(r[COL.mobile])).length,c=currentExportRows.filter(r=>normalize(r[COL.consent]).includes('ยินยอม')).length;$('exportSummary').innerHTML=`<span class="export-stat">พบ <strong>${currentExportRows.length.toLocaleString('th-TH')}</strong> ราย</span><span class="export-stat">มี Email <strong>${e.toLocaleString('th-TH')}</strong></span><span class="export-stat">มี Mobile <strong>${m.toLocaleString('th-TH')}</strong></span><span class="export-stat">ยินยอม <strong>${c.toLocaleString('th-TH')}</strong></span>`;if(show){$('exportPreviewWrap').style.display='block';const limit=100;const more=currentExportRows.length>limit?`<tr><td colspan="10" style="text-align:center;color:var(--muted)">แสดงตัวอย่าง ${limit} รายแรกจากทั้งหมด ${currentExportRows.length.toLocaleString('th-TH')} ราย · ไฟล์ส่งออกจะครบทุกรายการ</td></tr>`:'';$('exportPreviewBody').innerHTML=(currentExportRows.slice(0,limit).map(r=>`<tr><td>${escapeHtml(normalize(r[COL.firstName])+' '+normalize(r[COL.lastName]))}</td><td>${escapeHtml(normalize(r[COL.email]))}</td><td>${escapeHtml(normalize(r[COL.mobile]))}</td><td>${escapeHtml(normalize(r[COL.province]))}</td><td>${escapeHtml(getRegion(r[COL.province]))}</td><td>${escapeHtml(normalizeSchoolName(r[COL.school]).name)}</td><td>${escapeHtml(normalizeEducationStatus(r[COL.level]))}</td><td>${escapeHtml(normalize(r[COL.year]))}</td><td>${escapeHtml(normalize(r[COL.program]))}</td><td>${escapeHtml(normalize(r[COL.consent]))}</td></tr>`).join('')||'<tr><td colspan="10">ไม่พบข้อมูล</td></tr>')+more;}}
-function confirmExport(){return confirm(`กำลังส่งออกข้อมูลส่วนบุคคล ${currentExportRows.length.toLocaleString('th-TH')} รายการ\nโปรดยืนยันว่าใช้ข้อมูลตามวัตถุประสงค์และข้อกำหนด PDPA ของหน่วยงาน`);}
+function requireExportAuth(){if(!CONFIG.exportPin)return true;const pin=prompt('การเข้าถึงข้อมูลส่วนบุคคลต้องยืนยันตัวตน\nกรุณากรอกรหัสผ่านเพื่อดำเนินการ:');if(pin===null)return false;if(String(pin).trim()!==String(CONFIG.exportPin)){alert('รหัสผ่านไม่ถูกต้อง');return false;}return true;}
+function confirmExport(){if(!requireExportAuth())return false;return confirm(`กำลังส่งออกข้อมูลส่วนบุคคล ${currentExportRows.length.toLocaleString('th-TH')} รายการ\nโปรดยืนยันว่าใช้ข้อมูลตามวัตถุประสงค์และข้อกำหนด PDPA ของหน่วยงาน`);}
 function downloadBlob(content,type,name){const blob=new Blob([content],{type});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=name;document.body.appendChild(a);a.click();URL.revokeObjectURL(a.href);a.remove();}
 function buildReportData(){
   const rows=filteredRows();
@@ -900,14 +903,12 @@ async function loadData(preferBootstrap){
       }
     }
     allRows = rows.filter(r => normalize(r[COL.timestamp]));
-    window.__kkbsRows = allRows.length;
     rebuildKnownSchoolSet();
     populateFilters();
     updateDashboard();
     setLiveStatus('connected','เชื่อมต่อ Google Sheets แล้ว · ข้อมูลและบทวิเคราะห์ซิงก์อัตโนมัติ');
     $('lastUpdated').textContent = 'อัปเดตล่าสุด ' + new Date().toLocaleString('th-TH');
   }catch(err){
-    window.__kkbsErr = String((err && err.message) || err);
     $('errorBox').innerHTML = `<strong>ไม่สามารถเชื่อมต่อ Google Sheets ได้</strong><br>${err.message}<br><small>โปรดตรวจสอบว่าสเปรดชีตเปิดสิทธิ์ “ทุกคนที่มีลิงก์ดูได้” หรือเผยแพร่บนเว็บแล้ว</small>`;
     $('errorBox').style.display = 'block';
     setLiveStatus('error','ไม่สามารถเชื่อมต่อ Google Sheets');
@@ -1673,7 +1674,7 @@ function initEnhancedUI(){
   const close=()=>{$('settingsDrawer').classList.remove('open');$('drawerOverlay').classList.remove('open')};$('closeSettingsBtn').addEventListener('click',close);$('drawerOverlay').addEventListener('click',close);
   $('fontSelect').addEventListener('change',e=>{localStorage.setItem('kkbsFont',e.target.value);applySettings()});$('fontScale').addEventListener('input',e=>{localStorage.setItem('kkbsFontScale',e.target.value);applySettings()});document.querySelectorAll('[data-theme-choice]').forEach(b=>b.addEventListener('click',()=>{localStorage.setItem('kkbsTheme',b.dataset.themeChoice);applySettings()}));$('resetSettingsBtn').addEventListener('click',()=>{['kkbsFont','kkbsFontScale','kkbsTheme'].forEach(k=>localStorage.removeItem(k));applySettings()});matchMedia('(prefers-color-scheme: dark)').addEventListener?.('change',()=>{if((localStorage.getItem('kkbsTheme')||'system')==='system')applySettings()});
   $('mapProvinceBtn').addEventListener('click',()=>{mapMode='province';$('mapProvinceBtn').classList.add('active');$('mapRegionBtn').classList.remove('active');renderThailandMap(filteredRows())});$('mapRegionBtn').addEventListener('click',()=>{mapMode='region';$('mapRegionBtn').classList.add('active');$('mapProvinceBtn').classList.remove('active');renderThailandMap(filteredRows())});
-  $('matrixGeoMode').addEventListener('change',()=>updateProgramGeoMatrix(filteredRows()));['exportRegion','exportProvince','exportProgram','exportYear','exportLevel','exportSchool','exportConsent'].forEach(id=>$(id).addEventListener('change',()=>refreshExportPreview()));$('previewExportBtn').addEventListener('click',()=>refreshExportPreview(true));$('exportCsvBtn').addEventListener('click',exportCsv);$('exportXlsxBtn').addEventListener('click',exportXlsx);$('copyEmailBtn').addEventListener('click',()=>copyContact('email'));$('copyPhoneBtn').addEventListener('click',()=>copyContact('phone'));$('exportReportJsonBtn').addEventListener('click',exportReportJson);$('aiRewriteBtn').addEventListener('click',aiRewrite);$('ruleSummaryBtn').addEventListener('click',()=>{$('executiveSummaryLead').textContent=lastRuleSummary;$('aiStatus').textContent='ใช้ Rule-based Summary'});
+  $('matrixGeoMode').addEventListener('change',()=>updateProgramGeoMatrix(filteredRows()));['exportRegion','exportProvince','exportProgram','exportYear','exportLevel','exportSchool','exportConsent'].forEach(id=>$(id).addEventListener('change',()=>refreshExportPreview()));$('previewExportBtn').addEventListener('click',()=>{if(requireExportAuth())refreshExportPreview(true);});$('exportCsvBtn').addEventListener('click',exportCsv);$('exportXlsxBtn').addEventListener('click',exportXlsx);$('copyEmailBtn').addEventListener('click',()=>copyContact('email'));$('copyPhoneBtn').addEventListener('click',()=>copyContact('phone'));$('exportReportJsonBtn').addEventListener('click',exportReportJson);$('aiRewriteBtn').addEventListener('click',aiRewrite);$('ruleSummaryBtn').addEventListener('click',()=>{$('executiveSummaryLead').textContent=lastRuleSummary;$('aiStatus').textContent='ใช้ Rule-based Summary'});
 }
 initEnhancedUI();
 
