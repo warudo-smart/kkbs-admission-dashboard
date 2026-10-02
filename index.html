@@ -338,7 +338,7 @@
     .export-filters{display:grid;grid-template-columns:repeat(4,minmax(160px,1fr));gap:12px}.export-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}.export-actions button{border:1px solid var(--border);background:var(--input-bg);color:var(--text)}.export-actions .primary{background:var(--orange);color:#fff;border-color:var(--orange)}
     .export-summary{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}.export-stat{background:var(--surface-soft);border:1px solid var(--border);border-radius:10px;padding:8px 11px;font-size:12px}.privacy-note{padding:12px 14px;border-radius:10px;background:#fff8ef;border:1px solid #f7d6ae;color:#7d4b1f;font-size:12px;line-height:1.55;margin-top:12px}body[data-theme="dark"] .privacy-note{background:#342a20;border-color:#5b4732;color:#f5d9b6}
     .preview-table{max-height:360px;overflow:auto;margin-top:12px}.ai-toolbar{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-top:10px}.ai-status{font-size:12px;color:var(--muted)}
-    .school-status{white-space:nowrap}.school-alias{font-size:11px;color:var(--muted);margin-top:2px}
+    .school-alias{font-size:11px;color:var(--muted);margin-top:2px}
     @media(max-width:1100px){.quality-grid,.regional-summary-grid,.analytics-grid{grid-template-columns:repeat(2,1fr)}.export-filters{grid-template-columns:repeat(2,1fr)}}
     @media(max-width:680px){.quality-grid,.regional-summary-grid,.analytics-grid,.export-filters{grid-template-columns:1fr}.settings-drawer{width:94vw}.kpi.secondary-kpi .kpi-value{font-size:23px}.map-toolbar{width:100%}}
 
@@ -379,26 +379,26 @@
     </div>
   </section>
 
-  <div class="kpi-section-label">PRIMARY KPI · ภาพรวมฐานผู้รับข่าวสาร</div>
+  <div class="kpi-section-label">ตัวชี้วัดหลัก · ภาพรวมผู้รับข่าวสาร</div>
   <section class="kpi-grid">
-    <article class="panel kpi"><div class="kpi-label"><span class="fa-ui"><i class="fa-solid fa-database"></i></span>ผู้สมัครรับข่าวสารทั้งหมด</div><div class="kpi-value" id="kpiTotal">0</div><div class="kpi-note">จำนวนรายการตามตัวกรองที่เลือก</div></article>
-    <article class="panel kpi"><div class="kpi-label"><span class="fa-ui"><i class="fa-solid fa-user-group"></i></span>ผู้สนใจไม่ซ้ำ</div><div class="kpi-value" id="kpiUnique">0</div><div class="kpi-note">จับคู่ไม่ซ้ำด้วยอีเมล → เบอร์มือถือ → ลำดับรายการ</div></article>
-    <article class="panel kpi"><div class="kpi-label"><span class="fa-ui"><i class="fa-solid fa-map-location-dot"></i></span>จังหวัดที่ครอบคลุม</div><div class="kpi-value" id="kpiProvince">0</div><div class="kpi-note">จำนวนจังหวัดไม่ซ้ำ</div></article>
-    <article class="panel kpi"><div class="kpi-label"><span class="fa-ui"><i class="fa-solid fa-school"></i></span>สถานศึกษาที่ครอบคลุม</div><div class="kpi-value" id="kpiInstitution">0</div><div class="kpi-note">หลังปรับชื่อเป็นมาตรฐานที่ยืนยันได้</div></article>
+    <article class="panel kpi"><div class="kpi-label"><span class="fa-ui"><i class="fa-solid fa-database"></i></span>ผู้ลงทะเบียนรับข่าวสาร (รายการ)</div><div class="kpi-value" id="kpiTotal">0</div><div class="kpi-note">นับทุกครั้งที่ลงทะเบียน · ตามตัวกรองที่เลือก</div></article>
+    <article class="panel kpi"><div class="kpi-label"><span class="fa-ui"><i class="fa-solid fa-user-group"></i></span>ผู้สนใจ (ไม่ซ้ำคน)</div><div class="kpi-value" id="kpiUnique">0</div><div class="kpi-note">นับเป็น "คน" ตัดรายการซ้ำออก โดยอ้างอิงอีเมล/เบอร์มือถือ</div></article>
+    <article class="panel kpi"><div class="kpi-label"><span class="fa-ui"><i class="fa-solid fa-map-location-dot"></i></span>จำนวนจังหวัดที่มีผู้สนใจ</div><div class="kpi-value" id="kpiProvince">0</div><div class="kpi-note">นับจังหวัดที่ไม่ซ้ำ</div></article>
+    <article class="panel kpi"><div class="kpi-label"><span class="fa-ui"><i class="fa-solid fa-school"></i></span>จำนวนสถานศึกษาที่พบ</div><div class="kpi-value" id="kpiInstitution">0</div><div class="kpi-note">หลังปรับชื่อให้เป็นมาตรฐาน</div></article>
   </section>
-  <div class="kpi-section-label">STRATEGIC KPI · สัญญาณสำหรับการสื่อสารและการรับนักศึกษา</div>
+  <div class="kpi-section-label">ตัวชี้วัดเชิงกลยุทธ์ · สัญญาณเพื่อการสื่อสารและการรับนักศึกษา</div>
   <section class="kpi-grid secondary">
-    <article class="panel kpi secondary-kpi"><div class="kpi-label"><span class="fa-ui"><i class="fa-solid fa-arrow-trend-up"></i></span>ผู้ติดตามใหม่ 7 วัน</div><div class="kpi-value" id="kpiNew7">0</div><div class="kpi-trend" id="kpiNew7Trend">—</div></article>
-    <article class="panel kpi secondary-kpi"><div class="kpi-label"><span class="fa-ui"><i class="fa-solid fa-book-open"></i></span>หลักสูตรอันดับ 1</div><div class="kpi-value" id="kpiTopProgram">—</div><div class="kpi-trend" id="kpiTopProgramNote">—</div></article>
-    <article class="panel kpi secondary-kpi"><div class="kpi-label"><span class="fa-ui"><i class="fa-solid fa-location-dot"></i></span>จังหวัดอันดับ 1</div><div class="kpi-value" id="kpiTopProvince">—</div><div class="kpi-trend" id="kpiTopProvinceNote">—</div></article>
-    <article class="panel kpi secondary-kpi"><div class="kpi-label"><span class="fa-ui"><i class="fa-solid fa-school-flag"></i></span>สถานศึกษาอันดับ 1</div><div class="kpi-value" id="kpiTopSchool">—</div><div class="kpi-trend" id="kpiTopSchoolNote">—</div></article>
+    <article class="panel kpi secondary-kpi"><div class="kpi-label"><span class="fa-ui"><i class="fa-solid fa-arrow-trend-up"></i></span>ผู้ลงทะเบียนใหม่ (7 วันล่าสุด)</div><div class="kpi-value" id="kpiNew7">0</div><div class="kpi-trend" id="kpiNew7Trend">—</div></article>
+    <article class="panel kpi secondary-kpi"><div class="kpi-label"><span class="fa-ui"><i class="fa-solid fa-book-open"></i></span>หลักสูตรที่สนใจมากที่สุด</div><div class="kpi-value" id="kpiTopProgram">—</div><div class="kpi-trend" id="kpiTopProgramNote">—</div></article>
+    <article class="panel kpi secondary-kpi"><div class="kpi-label"><span class="fa-ui"><i class="fa-solid fa-location-dot"></i></span>จังหวัดที่มีผู้สนใจมากที่สุด</div><div class="kpi-value" id="kpiTopProvince">—</div><div class="kpi-trend" id="kpiTopProvinceNote">—</div></article>
+    <article class="panel kpi secondary-kpi"><div class="kpi-label"><span class="fa-ui"><i class="fa-solid fa-school-flag"></i></span>สถานศึกษาที่มีผู้สนใจมากที่สุด</div><div class="kpi-value" id="kpiTopSchool">—</div><div class="kpi-trend" id="kpiTopSchoolNote">—</div></article>
   </section>
   <section class="chart-grid" style="margin-bottom:18px">
 <article class="panel chart-card wide">
       <div class="chart-head">
         <div>
-          <div class="chart-title"><i class="fa-solid fa-map" aria-hidden="true"></i>แผนที่การกระจายตัวของผู้ติดตามผู้สมัครรับข่าวสารการรับสมัครเข้าศึกษา</div>
-          <div class="chart-desc">สีเข้มแสดงพื้นที่ที่มีผู้ลงทะเบียนมากกว่า · คลิกจังหวัดเพื่อใช้เป็นตัวกรอง</div>
+          <div class="chart-title"><i class="fa-solid fa-map" aria-hidden="true"></i>แผนที่ผู้ลงทะเบียนรับข่าวสารทั่วประเทศ</div>
+          <div class="chart-desc">ยิ่งสีเข้ม = มีผู้ลงทะเบียนมาก · คลิกจังหวัดเพื่อกรองข้อมูล</div>
         </div>
         <div class="map-toolbar"><button class="toggle-btn active" id="mapProvinceBtn"><i class="fa-solid fa-map-location-dot"></i> จังหวัด</button><button class="toggle-btn" id="mapRegionBtn"><i class="fa-solid fa-layer-group"></i> ภูมิภาค</button></div>
       </div>
@@ -450,9 +450,9 @@
 
 
   <section class="panel strategy-section">
-    <h2 class="section-title"><i class="fa-solid fa-bullseye section-icon" aria-hidden="true"></i>Communication Strategy Insights</h2>
+    <h2 class="section-title"><i class="fa-solid fa-bullseye section-icon" aria-hidden="true"></i>ข้อเสนอเชิงกลยุทธ์การสื่อสาร</h2>
     <p class="strategy-intro">
-      ข้อมูลเชิงวิเคราะห์เพื่อสนับสนุนการวางแผนกลยุทธ์การสื่อสารและประชาสัมพันธ์การรับสมัครเข้าศึกษา โดยสังเคราะห์จากข้อมูลจริงตามตัวกรองปัจจุบัน ไม่ใช่ข้อสั่งการหรือข้อสรุปตายตัว
+      บทวิเคราะห์เพื่อช่วยวางแผนการสื่อสารและประชาสัมพันธ์การรับสมัคร สรุปจากข้อมูลจริงตามตัวกรองที่เลือก · ไม่ใช่ข้อสั่งการหรือข้อสรุปตายตัว
     </p>
 
     <div class="strategy-grid">
@@ -488,54 +488,54 @@
 
   <section class="chart-grid">
     <article class="panel chart-card">
-      <div class="chart-head"><div><div class="chart-title"><i class="fa-solid fa-location-dot" aria-hidden="true"></i>ผู้สนใจจำแนกตามจังหวัด</div><div class="chart-desc">แสดง 10 จังหวัดที่มีผู้ลงทะเบียนสูงสุด เพื่อช่วยกำหนดพื้นที่เป้าหมายสำหรับกิจกรรมแนะแนวและสื่อโฆษณา</div></div></div>
+      <div class="chart-head"><div><div class="chart-title"><i class="fa-solid fa-location-dot" aria-hidden="true"></i>ผู้สนใจแยกตามจังหวัด</div><div class="chart-desc">10 จังหวัดที่มีผู้ลงทะเบียนมากที่สุด · ช่วยกำหนดพื้นที่จัดกิจกรรมแนะแนวและยิงโฆษณา</div></div></div>
       <div class="chart-wrap"><canvas id="provinceChart"></canvas></div>
     </article>
 
     <article class="panel chart-card">
-      <div class="chart-head"><div><div class="chart-title"><i class="fa-solid fa-book-open" aria-hidden="true"></i>ความสนใจจำแนกตามหลักสูตร</div><div class="chart-desc">นับจำนวนครั้งที่หลักสูตรถูกเลือก โดยผู้ตอบหนึ่งคนสามารถเลือกได้หลายหลักสูตร</div></div></div>
+      <div class="chart-head"><div><div class="chart-title"><i class="fa-solid fa-book-open" aria-hidden="true"></i>ความสนใจแยกตามหลักสูตร</div><div class="chart-desc">นับครั้งที่แต่ละหลักสูตรถูกเลือก (หนึ่งคนเลือกได้หลายหลักสูตร)</div></div></div>
       <div class="chart-wrap"><canvas id="programChart"></canvas></div>
     </article>
 
     <article class="panel chart-card">
-      <div class="chart-head"><div><div class="chart-title"><i class="fa-solid fa-bullhorn" aria-hidden="true"></i>ช่องทางที่ทำให้รู้จัก KKBS</div><div class="chart-desc">สะท้อนประสิทธิภาพของช่องทางการสื่อสารและจุดสัมผัสที่ทำให้กลุ่มเป้าหมายรู้จักคณะ</div></div></div>
+      <div class="chart-head"><div><div class="chart-title"><i class="fa-solid fa-bullhorn" aria-hidden="true"></i>ช่องทางที่ทำให้รู้จัก KKBS</div><div class="chart-desc">ช่องทางที่ทำให้กลุ่มเป้าหมายรู้จักคณะ</div></div></div>
       <div class="chart-wrap"><canvas id="channelChart"></canvas></div>
     </article>
 
     <article class="panel chart-card">
-      <div class="chart-head"><div><div class="chart-title"><i class="fa-solid fa-user-graduate" aria-hidden="true"></i>สถานะการศึกษาของผู้ติดตาม</div><div class="chart-desc">ใช้ประเมินสถานะการศึกษาปัจจุบันของผู้ติดตาม เพื่อสนับสนุนการวางแผนเนื้อหาและช่วงเวลาการสื่อสารให้เหมาะสม</div></div></div>
+      <div class="chart-head"><div><div class="chart-title"><i class="fa-solid fa-user-graduate" aria-hidden="true"></i>สถานะการศึกษาของผู้สนใจ</div><div class="chart-desc">ระดับชั้น/สถานะปัจจุบันของผู้สนใจ · ใช้กำหนดเนื้อหาและช่วงเวลาสื่อสารให้เหมาะ</div></div></div>
       <div class="chart-wrap"><canvas id="levelChart"></canvas></div>
     </article>
 
     <article class="panel chart-card">
-      <div class="chart-head"><div><div class="chart-title"><i class="fa-solid fa-calendar-days" aria-hidden="true"></i>ปีการศึกษาที่ต้องการสมัคร</div><div class="chart-desc">แสดงจำนวนผู้สนใจจำแนกตามปีการศึกษาที่วางแผนสมัคร เพื่อสนับสนุนการวางแผนสื่อสารและกิจกรรมรับสมัครล่วงหน้า</div></div></div>
+      <div class="chart-head"><div><div class="chart-title"><i class="fa-solid fa-calendar-days" aria-hidden="true"></i>ปีการศึกษาที่ต้องการสมัคร</div><div class="chart-desc">จำนวนผู้สนใจแยกตามปีการศึกษาที่วางแผนจะสมัคร</div></div></div>
       <div class="chart-wrap"><canvas id="admissionYearChart"></canvas></div>
     </article>
 
     <article class="panel chart-card">
-      <div class="chart-head"><div><div class="chart-title"><i class="fa-solid fa-graduation-cap" aria-hidden="true"></i>ระดับการศึกษาที่สนใจ</div><div class="chart-desc">แสดงระดับการศึกษาที่กลุ่มเป้าหมายต้องการสมัคร เพื่อช่วยกำหนดเนื้อหาและช่องทางประชาสัมพันธ์ให้เหมาะสม</div></div></div>
+      <div class="chart-head"><div><div class="chart-title"><i class="fa-solid fa-graduation-cap" aria-hidden="true"></i>ระดับการศึกษาที่สนใจ</div><div class="chart-desc">ระดับการศึกษาที่ผู้สนใจต้องการสมัคร · ช่วยกำหนดเนื้อหาและช่องทางประชาสัมพันธ์</div></div></div>
       <div class="chart-wrap"><canvas id="studyInterestChart"></canvas></div>
     </article>
 
     <article class="panel chart-card wide">
-      <div class="chart-head"><div><div class="chart-title"><i class="fa-solid fa-chart-line" aria-hidden="true"></i>แนวโน้มจำนวนผู้ลงทะเบียนรายวัน</div><div class="chart-desc">แสดงจังหวะการตอบรับหลังการประชาสัมพันธ์หรือกิจกรรม เพื่อช่วยวิเคราะห์ผลของแคมเปญ</div></div></div>
+      <div class="chart-head"><div><div class="chart-title"><i class="fa-solid fa-chart-line" aria-hidden="true"></i>แนวโน้มจำนวนผู้ลงทะเบียนรายวัน</div><div class="chart-desc">จำนวนผู้ลงทะเบียนในแต่ละวัน · ช่วยดูผลตอบรับหลังการประชาสัมพันธ์หรือกิจกรรม</div></div></div>
       <div class="chart-wrap"><canvas id="trendChart"></canvas></div>
     </article>
   </section>
 
 
   <section class="panel module" id="schoolIntelligenceSection">
-    <div class="module-head"><div><h2><i class="fa-solid fa-school section-icon"></i>School Intelligence</h2><div class="module-desc">วิเคราะห์สถานศึกษาที่มีฐานผู้สนใจสูง สถานศึกษาที่กำลังมี Momentum และสถานะการปรับชื่อให้เป็นมาตรฐาน โดยไม่คาดเดาชื่อที่ยังยืนยันไม่ได้</div></div></div>
+    <div class="module-head"><div><h2><i class="fa-solid fa-school section-icon"></i>ข้อมูลเชิงลึกสถานศึกษา</h2><div class="module-desc">สถานศึกษาที่มีผู้สนใจมาก · สถานศึกษาที่กำลังมาแรง · สถานะการปรับชื่อให้เป็นมาตรฐาน (ไม่เดาชื่อที่ยังยืนยันไม่ได้)</div></div></div>
     <div class="analytics-grid" id="schoolIntelligenceCards"></div>
   </section>
 
   <section class="panel module">
-    <div class="module-head"><div><h2><i class="fa-solid fa-table-cells-large section-icon"></i>Program × Geography Analysis</h2><div class="module-desc">มองความสนใจหลักสูตรเทียบกับพื้นที่ เพื่อค้นหาสัญญาณเชิงเนื้อหาและการรับนักศึกษาในแต่ละจังหวัด/ภูมิภาค</div></div><select id="matrixGeoMode" style="width:auto"><option value="region">ภูมิภาค</option><option value="province">จังหวัด Top 8</option></select></div>
+    <div class="module-head"><div><h2><i class="fa-solid fa-table-cells-large section-icon"></i>หลักสูตร × พื้นที่</h2><div class="module-desc">เปรียบเทียบความสนใจแต่ละหลักสูตรกับพื้นที่ · ดูว่าพื้นที่ใดสนใจหลักสูตรอะไร</div></div><select id="matrixGeoMode" style="width:auto"><option value="region">ภูมิภาค</option><option value="province">จังหวัด Top 8</option></select></div>
     <div class="matrix-wrap"><table class="matrix"><thead id="programGeoHead"></thead><tbody id="programGeoBody"></tbody></table></div>
   </section>
 
   <section class="panel module">
-    <div class="module-head"><div><h2><i class="fa-solid fa-shield-check section-icon"></i>Data Quality & Contactability</h2><div class="module-desc">ประเมินความพร้อมของฐานข้อมูลก่อนนำไปใช้สื่อสารหรือส่งออก โดยแยกเป็นความพร้อมในการติดต่อ ความยินยอม รายการซ้ำ และข้อมูลสถานศึกษาที่ต้องตรวจสอบ</div></div></div>
+    <div class="module-head"><div><h2><i class="fa-solid fa-shield-check section-icon"></i>คุณภาพข้อมูลและความพร้อมติดต่อ</h2><div class="module-desc">ตรวจความพร้อมของข้อมูลก่อนนำไปใช้ เช่น มีช่องทางติดต่อไหม มีความยินยอมไหม มีรายการซ้ำไหม และชื่อสถานศึกษาที่ต้องตรวจสอบ</div></div></div>
     <div class="quality-grid">
       <div class="quality-card"><div class="quality-label">อัตราการยินยอม</div><div class="quality-value" id="qualityConsent">0%</div><div class="quality-note">ความยินยอมสำหรับการรับข่าวสาร</div></div>
       <div class="quality-card"><div class="quality-label">มีอีเมล</div><div class="quality-value" id="qualityEmail">0%</div><div class="quality-note" id="qualityEmailNote">—</div></div>
@@ -549,7 +549,7 @@
   </section>
 
   <section class="panel module" id="exportSection">
-    <div class="module-head"><div><h2><i class="fa-solid fa-file-export section-icon"></i>Export Audience Segment</h2><div class="module-desc">กรองกลุ่มผู้รับข่าวสารตามพื้นที่ หลักสูตร ปีการศึกษา ระดับชั้น สถานศึกษา และความยินยอม ก่อนส่งออกข้อมูลติดต่อ</div></div></div>
+    <div class="module-head"><div><h2><i class="fa-solid fa-file-export section-icon"></i>ส่งออกกลุ่มเป้าหมาย</h2><div class="module-desc">เลือกกลุ่มผู้รับข่าวสารตามพื้นที่/หลักสูตร/ปี/ระดับชั้น/สถานศึกษา และความยินยอม ก่อนส่งออกข้อมูลติดต่อ</div></div></div>
     <div class="export-filters">
       <div><label>ภูมิภาค</label><select id="exportRegion"></select></div>
       <div><label>จังหวัด</label><select id="exportProvince"></select></div>
@@ -568,13 +568,13 @@
   <section class="panel table-card">
     <div class="chart-head">
       <div>
-        <div class="chart-title"><i class="fa-solid fa-school" aria-hidden="true"></i>รายชื่อโรงเรียน/มหาวิทยาลัยเดิมของผู้สมัครรับข่าวสาร</div>
+        <div class="chart-title"><i class="fa-solid fa-school" aria-hidden="true"></i>รายชื่อสถานศึกษาเดิมของผู้ลงทะเบียน</div>
       </div>
     </div>
     <div class="table-wrap">
       <table>
         <thead>
-          <tr><th class="rank-col">ลำดับ</th><th>ชื่อสถานศึกษามาตรฐาน</th><th>จังหวัด</th><th>สถานะ</th><th class="count-col">จำนวนคน</th></tr>
+          <tr><th class="rank-col">ลำดับ</th><th>ชื่อสถานศึกษามาตรฐาน</th><th>จังหวัด</th><th class="count-col">จำนวนคน</th></tr>
         </thead>
         <tbody id="schoolTableBody"></tbody>
       </table>
@@ -726,7 +726,6 @@ function normalizeSchoolName(raw){
   if(/^โรงเรียน|^มหาวิทยาลัย|^วิทยาลัย|^สถาบัน/.test(v)) return {name:v,status:'UNVERIFIED',raw:v};
   return {name:v,status:'UNVERIFIED',raw:v};
 }
-function statusBadge(status){const c=status==='VERIFIED'?'ok':status==='NORMALIZE'?'warn':'muted';const label=status==='VERIFIED'?'ยืนยันแล้ว':status==='NORMALIZE'?'ปรับชื่อแล้ว':'ยังไม่ยืนยัน';return `<span class="badge ${c}">${label}</span>`;}
 function pct(n,d){return d?Math.round(n*100/d):0;}
 function rolling7Stats(rows){
   const dated=rows.map(r=>({r,d:parseRowDate(r[COL.timestamp])})).filter(x=>x.d).sort((a,b)=>a.d-b.d); if(!dated.length)return {current:0,previous:0,growth:null};
@@ -757,7 +756,7 @@ function chartTextColor(){return getComputedStyle(document.documentElement).getP
 function chartGridColor(){return getComputedStyle(document.documentElement).getPropertyValue('--chart-grid').trim()||'#eef0f4';}
 function chartFont(){return localStorage.getItem('kkbsFont')||'Prompt';}
 function regionCounts(rows){return counts(rows.map(r=>getRegion(r[COL.province])).filter(x=>x!=='ไม่ระบุภูมิภาค'));}
-function renderRegionalSummary(rows){const map=regionCounts(rows);const total=rows.length;$('regionalSummary').innerHTML=Object.keys(REGION_PROVINCES).map(region=>{const n=map[region]||0;const top=sortedEntries(counts(rows.filter(r=>getRegion(r[COL.province])===region).map(r=>r[COL.province])),3).map(x=>x[0]).join(', ')||'—';return `<div class="region-card"><div class="region-label">${region}</div><div class="region-value">${n.toLocaleString('th-TH')}</div><div class="region-note">${pct(n,total)}% · จังหวัดเด่น: ${escapeHtml(top)}</div></div>`}).join('');}
+function renderRegionalSummary(rows){const map=regionCounts(rows);const total=rows.length;$('regionalSummary').innerHTML=Object.keys(REGION_PROVINCES).map(region=>{const n=map[region]||0;const top=sortedEntries(counts(rows.filter(r=>getRegion(r[COL.province])===region).map(r=>r[COL.province])),3).map(x=>x[0]).join(', ')||'—';return `<div class="region-card"><div class="region-label">${region}</div><div class="region-value">${n.toLocaleString('th-TH')}</div><div class="region-note">${pct(n,total)}% · จังหวัดที่มีผู้สนใจมากสุด: ${escapeHtml(top)}</div></div>`}).join('');}
 function currentMapLabelRows(rows){return mapMode==='province'?rows:rows;}
 function fillRegionMap(rows){
   if(!provinceGeoLayer)return;const rc=regionCounts(rows);const max=Math.max(1,...Object.values(rc));provinceGeoLayer.eachLayer(layer=>{const p=geoProvinceName(layer.feature);const region=getRegion(p);const v=rc[region]||0;layer.setStyle({fillColor:provinceColor(v,max),weight:1,color:'#fff',fillOpacity:.8});layer.unbindTooltip();layer.bindTooltip(`<strong>${escapeHtml(region)}</strong><br>${v.toLocaleString('th-TH')} คน<br><small>${escapeHtml(p)}</small>`,{sticky:true});});buildProvinceLegend(max);
@@ -834,7 +833,7 @@ async function exportCsv(){refreshExportPreview();if(!currentExportRows.length)r
 function loadXlsxScript(){return new Promise((resolve,reject)=>{if(window.XLSX)return resolve();const s=document.createElement('script');s.src='https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js';s.onload=()=>resolve();s.onerror=()=>reject(new Error('โหลดโมดูล Excel ไม่สำเร็จ'));document.head.appendChild(s);});}
 async function exportXlsx(){refreshExportPreview();if(!currentExportRows.length)return;if(!(await confirmExport()))return;try{await loadXlsxScript();}catch(e){alert(e.message);return;}const ws=XLSX.utils.json_to_sheet(exportObjects());const wb=XLSX.utils.book_new();XLSX.utils.book_append_sheet(wb,ws,'Audience Segment');XLSX.writeFile(wb,'KKBS_Admission_Audience_Segment.xlsx');}
 async function copyContact(type){refreshExportPreview();if(!currentExportRows.length)return;if(!(await confirmExport()))return;const vals=[...new Set(currentExportRows.map(r=>type==='email'?normalizeContactEmail(r[COL.email]):normalizeMobile(r[COL.mobile])).filter(Boolean))];await navigator.clipboard.writeText(vals.join(type==='email'?'; ': '\n'));alert(`คัดลอก ${type==='email'?'Email':'เบอร์โทร'} ${vals.length.toLocaleString('th-TH')} รายการแล้ว`);}
-function buildAiPayload(){const rows=filteredRows();const p=sortedEntries(counts(rows.map(r=>r[COL.province])),3);const pr=sortedEntries(counts(rows.flatMap(r=>splitMulti(r[COL.program]))),3);const ch=sortedEntries(counts(rows.flatMap(r=>splitMulti(r[COL.channel]))),3);const filters={'ปีการศึกษาที่ต้องการสมัคร':$('yearFilter').value,'สถานะการศึกษาปัจจุบัน':$('levelFilter').value,'จังหวัด':$('provinceFilter').value,'หลักสูตรที่สนใจ':$('programFilter').value};const data={task:'Executive Summary / Key Observations / Communication Strategy Insights',rules:['ใช้เฉพาะข้อมูลที่ส่งให้','ห้ามสร้าง เดา หรือเปลี่ยนตัวเลข','ภาษาไทยเชิงบริหาร กระชับ ชัดเจน','แยกข้อเท็จจริงออกจากข้อสังเกต','ใช้ถ้อยคำ ข้อมูลบ่งชี้ว่า / พบสัญญาณว่า / พื้นที่ที่น่าจับตา / โอกาสทางการสื่อสาร'],filters:filters,data:{records:rows.length,uniquePersons:uniquePersonKeys(rows).size,topProvinces:p,topPrograms:pr,topChannels:ch,regions:sortedEntries(regionCounts(rows),6)}};return {model:CONFIG.aiModel,provider:CONFIG.aiProvider,secret:CONFIG.aiSecret||undefined,system_prompt:CONFIG.aiSystemPrompt,user_message:JSON.stringify(data)};}
+function buildAiPayload(){const rows=filteredRows();const p=sortedEntries(counts(rows.map(r=>r[COL.province])),3);const pr=sortedEntries(counts(rows.flatMap(r=>splitMulti(r[COL.program]))),3);const ch=sortedEntries(counts(rows.flatMap(r=>splitMulti(r[COL.channel]))),3);const filters={'ปีการศึกษาที่ต้องการสมัคร':$('yearFilter').value,'สถานะการศึกษาปัจจุบัน':$('levelFilter').value,'จังหวัด':$('provinceFilter').value,'หลักสูตรที่สนใจ':$('programFilter').value};const data={task:'บทสรุปผู้บริหาร / ข้อสังเกตสำคัญ / ข้อเสนอเชิงกลยุทธ์การสื่อสาร',rules:['ใช้เฉพาะข้อมูลที่ส่งให้','ห้ามสร้าง เดา หรือเปลี่ยนตัวเลข','ภาษาไทยเชิงบริหาร กระชับ ชัดเจน','แยกข้อเท็จจริงออกจากข้อสังเกต','ใช้ถ้อยคำ ข้อมูลบ่งชี้ว่า / พบสัญญาณว่า / พื้นที่ที่น่าจับตา / โอกาสทางการสื่อสาร'],filters:filters,data:{records:rows.length,uniquePersons:uniquePersonKeys(rows).size,topProvinces:p,topPrograms:pr,topChannels:ch,regions:sortedEntries(regionCounts(rows),6)}};return {model:CONFIG.aiModel,provider:CONFIG.aiProvider,secret:CONFIG.aiSecret||undefined,system_prompt:CONFIG.aiSystemPrompt,user_message:JSON.stringify(data)};}
 async function aiRewrite(){if(!CONFIG.aiProxyUrl){$('aiStatus').textContent='AI Editorial ยังไม่เปิดใช้: กำหนด CONFIG.aiProxyUrl (ดู KKBS_AI_Proxy_AppsScript/INSTALL.md)';return;}const btn=$('aiRewriteBtn');btn.disabled=true;$('aiStatus').textContent='AI กำลังเรียบเรียงบทสรุป...';try{const res=await fetch(CONFIG.aiProxyUrl,{method:'POST',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify(buildAiPayload())});if(!res.ok)throw new Error('AI proxy '+res.status);const j=await res.json();if(j.status==='error')throw new Error(j.error||'AI error');const text=j.content||j.text||j.output;if(!text)throw new Error('ไม่พบข้อความตอบกลับ');$('executiveSummaryLead').textContent=text;$('aiStatus').textContent='AI Editorial อัปเดตล่าสุด '+new Date().toLocaleTimeString('th-TH',{hour:'2-digit',minute:'2-digit'})+(j.keyHash?' · key '+j.keyHash:'');}catch(e){$('executiveSummaryLead').textContent=lastRuleSummary;$('aiStatus').textContent='AI ไม่พร้อมใช้งาน · กลับมาใช้ Rule-based Summary'+(e&&e.message?' ('+e.message+')':'');}finally{btn.disabled=false;}}
 
 function gvizJsonpUrl(callbackName){
@@ -982,8 +981,8 @@ function updateDashboard(){
   const uniqueCount=uniquePersonKeys(rows).size; const provinceCount=new Set(rows.map(r=>normalize(r[COL.province])).filter(Boolean)).size; const institutionCount=new Set(rows.map(r=>normalizeSchoolName(r[COL.school]).name).filter(x=>x&&x!=='-')).size; const consentCount=rows.filter(r=>normalize(r[COL.consent]).includes('ยินยอม')).length; const consentRate=rows.length?Math.round(consentCount*100/rows.length):0;
   $('kpiTotal').textContent=rows.length.toLocaleString('th-TH');$('kpiUnique').textContent=uniqueCount.toLocaleString('th-TH');$('kpiProvince').textContent=provinceCount.toLocaleString('th-TH');$('kpiInstitution').textContent=institutionCount.toLocaleString('th-TH');
   const provinceTop=sortedEntries(counts(rows.map(r=>r[COL.province])),10); const programTop=sortedEntries(counts(rows.flatMap(r=>splitMulti(r[COL.program]))),10); const channelTop=sortedEntries(counts(rows.flatMap(r=>splitMulti(r[COL.channel]))),8); const levelTop=sortedEntries(counts(rows.map(r=>normalizeEducationStatus(r[COL.level]))),8); const admissionYearData=sortedEntries(counts(rows.map(r=>r[COL.year])),20).sort((a,b)=>a[0].localeCompare(b[0],'th',{numeric:true})); const studyInterestData=sortedEntries(counts(rows.flatMap(r=>splitMulti(r[COL.studyInterest]))),12); const trend=buildTrend(rows);
-  const r7=rolling7Stats(rows);$('kpiNew7').textContent=r7.current.toLocaleString('th-TH');$('kpiNew7Trend').textContent=r7.growth===null?'ข้อมูลไม่พอ':`${r7.growth>=0?'↑':'↓'} ${Math.abs(r7.growth).toFixed(1)}% เทียบ 7 วันก่อน`;$('kpiTopProgram').textContent=shortText(programTop[0]?.[0]||'—',22);$('kpiTopProgramNote').textContent=programTop[0]?`${programTop[0][1].toLocaleString('th-TH')} ครั้ง · ${pct(programTop[0][1],rows.length)}% ของรายการ`:'—';$('kpiTopProvince').textContent=shortText(provinceTop[0]?.[0]||'—',22);$('kpiTopProvinceNote').textContent=provinceTop[0]?`${provinceTop[0][1].toLocaleString('th-TH')} ราย · ${pct(provinceTop[0][1],rows.length)}%`:'—';
-  const schoolProvinceMap={}; rows.forEach(r=>{const sn=normalizeSchoolName(r[COL.school]);const school=sn.name;const province=normalize(r[COL.province])||'-';if(!school||school==='-')return;const key=`${school}|||${province}|||${sn.status}|||${sn.raw}`;schoolProvinceMap[key]=(schoolProvinceMap[key]||0)+1;}); currentSchoolEntries=Object.entries(schoolProvinceMap).map(([key,count])=>{const [school,province,status,raw]=key.split('|||');return {school,province,status,raw,count};}).sort((a,b)=>b.count-a.count||a.school.localeCompare(b.school,'th'));if(schoolPage>Math.max(1,Math.ceil(currentSchoolEntries.length/SCHOOL_PAGE_SIZE)))schoolPage=1;const topSchool=currentSchoolEntries[0];$('kpiTopSchool').textContent=shortText(topSchool?.school||'—',22);$('kpiTopSchoolNote').textContent=topSchool?`${topSchool.count.toLocaleString('th-TH')} ราย · ${topSchool.province}`:'—';
+  const r7=rolling7Stats(rows);$('kpiNew7').textContent=r7.current.toLocaleString('th-TH');$('kpiNew7Trend').textContent=r7.growth===null?'ข้อมูลไม่พอ':`${r7.growth>=0?'เพิ่มขึ้น ':'ลดลง '}${Math.abs(r7.growth).toFixed(1)}% เทียบกับช่วง 7 วันก่อนหน้า`;$('kpiTopProgram').textContent=shortText(programTop[0]?.[0]||'—',30);$('kpiTopProgram').title=programTop[0]?programTop[0][0]:'';$('kpiTopProgramNote').textContent=programTop[0]?`ถูกเลือก ${programTop[0][1].toLocaleString('th-TH')} ครั้ง · คิดเป็น ${pct(programTop[0][1],rows.length)}% ของทุกรายการ`:'—';$('kpiTopProvince').textContent=shortText(provinceTop[0]?.[0]||'—',30);$('kpiTopProvince').title=provinceTop[0]?provinceTop[0][0]:'';$('kpiTopProvinceNote').textContent=provinceTop[0]?`${provinceTop[0][1].toLocaleString('th-TH')} ราย · คิดเป็น ${pct(provinceTop[0][1],rows.length)}% ของทั้งหมด`:'—';
+  const schoolProvinceMap={}; rows.forEach(r=>{const sn=normalizeSchoolName(r[COL.school]);const school=sn.name;const province=normalize(r[COL.province])||'-';if(!school||school==='-')return;const key=`${school}|||${province}|||${sn.status}|||${sn.raw}`;schoolProvinceMap[key]=(schoolProvinceMap[key]||0)+1;}); currentSchoolEntries=Object.entries(schoolProvinceMap).map(([key,count])=>{const [school,province,status,raw]=key.split('|||');return {school,province,status,raw,count};}).sort((a,b)=>b.count-a.count||a.school.localeCompare(b.school,'th'));if(schoolPage>Math.max(1,Math.ceil(currentSchoolEntries.length/SCHOOL_PAGE_SIZE)))schoolPage=1;const topSchool=currentSchoolEntries[0];$('kpiTopSchool').textContent=shortText(topSchool?.school||'—',30);$('kpiTopSchool').title=topSchool?topSchool.school:'';$('kpiTopSchoolNote').textContent=topSchool?`${topSchool.count.toLocaleString('th-TH')} ราย · จังหวัด${topSchool.province}`:'—';
   renderBar('provinceChart',provinceTop,'#485e88',true);renderBar('programChart',programTop,'#f36f21',true);renderBar('channelChart',channelTop,'#485e88',true);renderBar('levelChart',levelTop,'#16865a',true);renderBar('admissionYearChart',admissionYearData,'#353c53',false);renderBar('studyInterestChart',studyInterestData,'#a73b24',true);renderLine('trendChart',trend);renderThailandMap(rows);renderRegionalSummary(rows);updateSummary(rows,uniqueCount,provinceCount,consentRate,provinceTop,programTop,channelTop,levelTop);lastRuleSummary=$('executiveSummaryLead').textContent;updateCommunicationStrategy(rows,provinceTop,programTop,channelTop,levelTop);updateSchoolIntelligence(rows);updateProgramGeoMatrix(rows);updateDataQuality(rows,uniqueCount,consentRate);renderSchoolTable();
 }
 
@@ -1000,9 +999,8 @@ function renderSchoolTable(){
       <td class="rank-col">${(start+i+1).toLocaleString('th-TH')}</td>
       <td>${escapeHtml(item.school)}${item.raw && item.raw!==item.school?`<div class="school-alias">เดิม: ${escapeHtml(item.raw)}</div>`:''}</td>
       <td>${escapeHtml(item.province)}</td>
-      <td class="school-status">${statusBadge(item.status)}</td>
       <td class="count-col">${item.count.toLocaleString('th-TH')}</td>
-    </tr>`).join('') : '<tr><td colspan="5" style="text-align:center;color:var(--muted);padding:24px">ไม่พบข้อมูลสถานศึกษา</td></tr>';
+    </tr>`).join('') : '<tr><td colspan="4" style="text-align:center;color:var(--muted);padding:24px">ไม่พบข้อมูลสถานศึกษา</td></tr>';
 
   $('schoolPaginationInfo').textContent = total ? `แสดง ${start+1}-${Math.min(start+SCHOOL_PAGE_SIZE,total)} จาก ${total.toLocaleString('th-TH')} แห่ง` : 'ไม่พบข้อมูล';
   $('schoolPageNumber').textContent = `หน้า ${schoolPage.toLocaleString('th-TH')} / ${totalPages.toLocaleString('th-TH')}`;
@@ -1394,7 +1392,7 @@ function updateSummary(rows, uniqueEmails, provinceCount, consentRate, provinceT
       `ฐานข้อมูลตามตัวกรองปัจจุบันมีจำนวน ${rows.length.toLocaleString('th-TH')} รายการ ` +
       `จากผู้สนใจที่ไม่ซ้ำกัน ${uniqueEmails.toLocaleString('th-TH')} คน ครอบคลุม ${provinceCount.toLocaleString('th-TH')} จังหวัด ` +
       `โดยจังหวัดที่มีผู้สนใจสูงสุด 3 อันดับแรก ได้แก่ ${legacyTopProvinces} ` +
-      `ขณะที่สถานะการศึกษาของผู้ติดตามสูงสุด 3 อันดับแรก ได้แก่ ${legacyTopLevels} ` +
+      `ขณะที่สถานะการศึกษาของผู้สนใจสูงสุด 3 อันดับแรก ได้แก่ ${legacyTopLevels} ` +
       `หลักสูตรที่ได้รับความสนใจสูงสุด 3 อันดับแรก ได้แก่ ${legacyTopPrograms} ` +
       `และช่องทางที่ทำให้รู้จัก KKBS สูงสุด 3 อันดับแรก ได้แก่ ${legacyTopChannels} ` +
       `ทั้งนี้ ${legacyConsentText} ` +
@@ -1635,7 +1633,7 @@ function updateCommunicationStrategy(rows, provinceTop, programTop, channelTop, 
   let channelGeoInterpretation = 'ควรพิจารณาช่องทางร่วมกับพื้นที่ ไม่ควรใช้จำนวนรวมของช่องทางเพียงตัวเดียวในการตัดสินใจ';
   if(topChannel && topProvince){
     channelGeoInterpretation =
-      `ช่องทางที่พบมากที่สุดคือ <strong>${escapeHtml(topChannel)}</strong> และพื้นที่ที่มีฐานผู้ติดตามสูงสุดคือ <strong>${escapeHtml(topProvince)}</strong> ` +
+      `ช่องทางที่พบมากที่สุดคือ <strong>${escapeHtml(topChannel)}</strong> และพื้นที่ที่มีฐานผู้สนใจสูงสุดคือ <strong>${escapeHtml(topProvince)}</strong> ` +
       `ข้อมูลนี้ช่วยชี้ให้เห็นจุดสัมผัสและพื้นที่ที่มีฐานเดิมสำหรับการออกแบบ Media Mix และ Geographic Targeting`;
   }
   if(momentumChannel && momentumChannel.name !== topChannel){
@@ -1660,7 +1658,7 @@ function updateCommunicationStrategy(rows, provinceTop, programTop, channelTop, 
   let activationInterpretation = 'ข้อมูลสามารถใช้ประกอบการพิจารณารูปแบบกิจกรรม เช่น School Visit, Roadshow, Open House หรือกิจกรรมประชาสัมพันธ์สัญจร โดยควรพิจารณาควบคู่กับทรัพยากร ระยะทาง ปฏิทินรับสมัคร และความพร้อมของโรงเรียน';
   if(topSchool && topSchoolCount >= 3){
     activationInterpretation =
-      `มีฐานผู้ติดตามจาก <strong>${escapeHtml(topSchool)}</strong> จำนวน ${fmt(topSchoolCount)} รายการ ซึ่งเป็นสัญญาณของความสนใจระดับสถานศึกษา ` +
+      `มีฐานผู้สนใจจาก <strong>${escapeHtml(topSchool)}</strong> จำนวน ${fmt(topSchoolCount)} รายการ ซึ่งเป็นสัญญาณของความสนใจระดับสถานศึกษา ` +
       `จึงสามารถใช้เป็นข้อมูลประกอบการพิจารณากิจกรรม School Visit หรือการประสานเครือข่ายกับโรงเรียนดังกล่าว`;
   }
   if(momentumSchool && momentumSchool.name !== topSchool){
