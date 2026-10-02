@@ -907,7 +907,8 @@ async function loadData(preferBootstrap){
     populateFilters();
     updateDashboard();
     setLiveStatus('connected','เชื่อมต่อ Google Sheets แล้ว · ข้อมูลและบทวิเคราะห์ซิงก์อัตโนมัติ');
-    $('lastUpdated').textContent = 'อัปเดตล่าสุด ' + new Date().toLocaleString('th-TH');
+    const latest = latestDataDate(allRows);
+    $('lastUpdated').textContent = 'ดึงข้อมูลล่าสุด ' + new Date().toLocaleString('th-TH') + (latest ? ' · ข้อมูลล่าสุด ณ วันที่ ' + latest.toLocaleDateString('th-TH',{day:'numeric',month:'long',year:'numeric'}) : '');
   }catch(err){
     $('errorBox').innerHTML = `<strong>ไม่สามารถเชื่อมต่อ Google Sheets ได้</strong><br>${err.message}<br><small>โปรดตรวจสอบว่าสเปรดชีตเปิดสิทธิ์ “ทุกคนที่มีลิงก์ดูได้” หรือเผยแพร่บนเว็บแล้ว</small>`;
     $('errorBox').style.display = 'block';
@@ -992,6 +993,7 @@ function renderSchoolTable(){
   $('schoolNextBtn').disabled = schoolPage >= totalPages;
 }
 
+function latestDataDate(rows){let max=null;rows.forEach(r=>{const d=parseRowDate(r[COL.timestamp]);if(d&&(!max||d>max))max=d;});return max;}
 function buildTrend(rows){
   const map={};
   rows.forEach(r=>{
@@ -1001,7 +1003,7 @@ function buildTrend(rows){
       const p=raw.match(/Date\((\d+),(\d+),(\d+)/); if(p) d=new Date(+p[1],+p[2],+p[3]);
     }else d=new Date(raw);
     if(!d || isNaN(d)) return;
-    const key=d.toISOString().slice(0,10);
+    const key=d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');
     map[key]=(map[key]||0)+1;
   });
   return Object.entries(map).sort((a,b)=>a[0].localeCompare(b[0])).map(([date,count])=>({date:new Date(date+'T00:00:00').toLocaleDateString('th-TH',{day:'numeric',month:'short'}),count}));
@@ -1346,8 +1348,10 @@ function updateSummary(rows, uniqueEmails, provinceCount, consentRate, provinceT
 
   const filterContext = selectedFilters.length ? `ภายใต้ตัวกรอง ${selectedFilters.join(' · ')}` : 'จากฐานข้อมูลทั้งหมด';
 
+  const latestAll = latestDataDate(allRows);
   lead.textContent =
     `${filterContext} พบข้อมูล ${fmt(rows.length)} รายการ จากผู้สนใจไม่ซ้ำ ${fmt(uniqueEmails)} คน ครอบคลุม ${fmt(provinceCount)} จังหวัด ` +
+    (latestAll ? `· ข้อมูลล่าสุด ณ วันที่ ${latestAll.toLocaleDateString('th-TH',{day:'numeric',month:'long',year:'numeric'})} ` : '') +
     `โดย CURRENT, TREND และ OUTLOOK ด้านล่างจะประมวลผลใหม่อัตโนมัติตามตัวกรองปัจจุบัน`;
 
 
